@@ -20,24 +20,24 @@ function App() {
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  //useEffect(() => {
-  //  async function loadCustomStyle() {
-  //    try {
-  //      const result: string | null = await core.invoke("get_custom_css");
-  //      if (result) {
-  //        const styleTag = document.createElement("style");
-  //        styleTag.textContent = result;
-  //        document.head.appendChild(styleTag);
-  //      } else {
-  //        console.warn("Custom style.css not found, using default styles.");
-  //      }
-  //    } catch (error) {
-  //      console.error("Error fetching custom style.css:", error);
-  //    }
-  //  }
-  //
-  //  loadCustomStyle();
-  //}, []);
+  useEffect(() => {
+    async function loadCustomStyle() {
+      try {
+        const result: string | null = await core.invoke("get_custom_css");
+        if (result) {
+          const styleTag = document.createElement("style");
+          styleTag.textContent = result;
+          document.head.appendChild(styleTag);
+        } else {
+          console.warn("Custom style.css not found, using default styles.");
+        }
+      } catch (error) {
+        console.error("Error fetching custom style.css:", error);
+      }
+    }
+
+    loadCustomStyle();
+  }, []);
 
   useEffect(() => {
     const incrementSelectedFileIndex = () => {
